@@ -4,6 +4,7 @@ import { View, StyleSheet, SafeAreaView, Text } from "react-native";
 import Headertabs from "../components/HeaderTabs";
 import Searchbar from "../components/SearchBar";
 import Categories from "../components/Categories";
+import Restaurantitem from "../components/RestaurantItem";
 
 import colors from "../utils/colors";
 
@@ -16,6 +17,7 @@ const Home = () => {
       <Headertabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <Searchbar />
       <Categories />
+      <Restaurantitem />
     </SafeAreaView>
   );
 };
