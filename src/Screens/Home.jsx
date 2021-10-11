@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, SafeAreaView, Text } from "react-native";
 
 import Headertabs from "../components/HeaderTabs";
+import Searchbar from "../components/SearchBar";
 
 import colors from "../utils/colors";
 
@@ -12,6 +13,7 @@ const Home = () => {
       style={{ backgroundColor: colors.primary_background, flex: 1 }}
     >
       <Headertabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Searchbar />
     </SafeAreaView>
   );
 };
