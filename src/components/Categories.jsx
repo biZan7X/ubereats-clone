@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.secondary_background,
     padding: 10,
+    marginBottom: 5,
   },
 });
 
