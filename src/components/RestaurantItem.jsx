@@ -4,14 +4,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../utils/colors";
 
-const imageUrl =
-  "https://lh3.googleusercontent.com/proxy/7lkWTgi22pmjvRzo6ZLxfYUE7OHmhfd9ThkL0fkpK29jx_5b8eueGW2ZltI8imRK9KrYC8f-VtclakO-Qt3sQwqA1LQywr-3ZTOwa5Rf5Yi81VaGOcdNOdTB5EyJRIaf14t-_0_YCIIeaVKAYIir8B1O";
-
-const ImageComponent = () => {
+const ImageComponent = ({ item }) => {
   return (
     <View>
       <Image
-        source={{ uri: imageUrl }}
+        source={{ uri: item.image_url }}
         style={{ width: "100%", height: 180 }}
       />
       <TouchableOpacity style={{ position: "absolute", right: 10, top: 10 }}>
@@ -21,7 +18,7 @@ const ImageComponent = () => {
   );
 };
 
-const Info = () => {
+const Info = ({ item }) => {
   return (
     <View
       style={{
@@ -31,9 +28,7 @@ const Info = () => {
       }}
     >
       <View>
-        <Text style={{ fontSize: 15, fontWeight: "bold" }}>
-          Schezwan Noodles
-        </Text>
+        <Text style={{ fontSize: 15, fontWeight: "bold" }}>{item.name}</Text>
         <Text style={{ fontSize: 13, color: "gray" }}>35-45 . mins</Text>
       </View>
       <View
@@ -45,17 +40,17 @@ const Info = () => {
           padding: 10,
         }}
       >
-        <Text style={{ fontWeight: "bold" }}>4</Text>
+        <Text style={{ fontWeight: "bold" }}>{item.rating}</Text>
       </View>
     </View>
   );
 };
 
-const Restaurantitem = () => {
+const Restaurantitem = ({ item }) => {
   return (
     <View style={styles.container}>
-      <ImageComponent />
-      <Info />
+      <ImageComponent item={item} />
+      <Info item={item} />
     </View>
   );
 };

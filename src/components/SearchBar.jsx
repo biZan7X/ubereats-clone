@@ -4,17 +4,19 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
+import config from "../../config";
+
 import colors from "../utils/colors";
 
-const Searchbar = () => {
+const Searchbar = ({ setCity }) => {
   return (
     <View style={styles.conatiner}>
       <View style={styles.searchBar}>
-        <Ionicons name="location-sharp" size={28} color="black" />
         <GooglePlacesAutocomplete
+          query={{ key: config.GOOGLE_API_KEY }}
           placeholder="Search"
           onPress={(data, details = null) => {
-            console.log(data, details);
+            setCity(data.description.split(",")[0]);
           }}
           styles={{
             textInput: {
@@ -28,14 +30,22 @@ const Searchbar = () => {
               borderRadius: 50,
               flexDirection: "row",
               alignItems: "center",
-              marginRight: 10,
             },
           }}
+          renderLeftButton={() => (
+            <View style={{ marginLeft: 10 }}>
+              <Ionicons name="location-sharp" size={24} />
+            </View>
+          )}
+          renderRightButton={() => {
+            return (
+              <View style={styles.buttonInfo}>
+                <AntDesign name="clockcircle" size={11} color="black" />
+                <Text style={{ marginLeft: 5 }}>Search</Text>
+              </View>
+            );
+          }}
         />
-        <View style={styles.buttonInfo}>
-          <AntDesign name="clockcircle" size={11} color="black" />
-          <Text style={{ marginLeft: 5 }}>Search</Text>
-        </View>
       </View>
     </View>
   );
@@ -48,11 +58,6 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     flexDirection: "row",
-    backgroundColor: colors.primary_background,
-    paddingLeft: 10,
-    borderRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
   },
   buttonInfo: {
     flexDirection: "row",
