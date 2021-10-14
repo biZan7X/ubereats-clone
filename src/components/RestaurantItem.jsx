@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import NavigationActions from "../navigation/NavigationActions";
+
 import colors from "../utils/colors";
 
 const ImageComponent = ({ item }) => {
@@ -48,10 +50,15 @@ const Info = ({ item }) => {
 
 const Restaurantitem = ({ item }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        NavigationActions.push("RestaurantDetails", { restaurant: item })
+      }
+    >
       <ImageComponent item={item} />
       <Info item={item} />
-    </View>
+    </TouchableOpacity>
   );
 };
 

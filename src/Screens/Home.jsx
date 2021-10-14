@@ -13,12 +13,13 @@ import Categories from "../components/Categories";
 import Restaurantitem from "../components/RestaurantItem";
 import Bottomtab from "../components/BottomTab";
 
+import NavigationActions from "../navigation/NavigationActions";
+
 import config from "../../config";
 
 import colors from "../utils/colors";
-import { localRestaurants } from "../utils/localData";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState("Delivery");
   const [city, setCity] = useState("San Francisco");
   const [restaurantData, setRestaurantData] = useState([]);
@@ -50,6 +51,8 @@ const Home = () => {
     }
     setRefreshing(false);
   };
+
+  useEffect(() => NavigationActions.set(navigation), []);
 
   useEffect(() => {
     getRestaurantsFromYelp();
