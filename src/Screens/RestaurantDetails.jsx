@@ -4,6 +4,7 @@ import { Divider } from "react-native-elements";
 
 import About from "../components/About";
 import Menuitem from "../components/MenuItem";
+import Viewcartbutton from "../components/ViewCartButton";
 
 import { foods } from "../utils/localData";
 
@@ -21,6 +22,7 @@ const Restaurantdetails = ({ route }) => {
           <Divider style={{ marginHorizontal: 40 }} />
         )}
       />
+      <Viewcartbutton />
     </View>
   );
 };
