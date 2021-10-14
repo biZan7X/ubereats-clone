@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, SafeAreaView, Text, FlatList } from "react-native";
+import { Divider } from "react-native-elements";
 
 import Headertabs from "../components/HeaderTabs";
 import Searchbar from "../components/SearchBar";
 import Categories from "../components/Categories";
 import Restaurantitem from "../components/RestaurantItem";
+import Bottomtab from "../components/BottomTab";
 
 import colors from "../utils/colors";
 import { localRestaurants } from "../utils/localData";
@@ -47,6 +49,9 @@ const Home = () => {
         keyExtractor={(item) => item.name}
         renderItem={(item) => <Restaurantitem item={item.item} />}
       />
+
+      <Divider width={2} />
+      <Bottomtab />
     </SafeAreaView>
   );
 };
