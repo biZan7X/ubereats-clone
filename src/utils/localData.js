@@ -27,3 +27,50 @@ export const localRestaurants = [
     rating: 4.9,
   },
 ];
+
+export const foods = [
+  {
+    title: "Schezwan Noodles",
+    description: "With extra spicy ramen soup 🍜🔥",
+    price: "$20.50",
+    image:
+      "https://lh3.googleusercontent.com/proxy/Q6OQVXvzMBeCOOdP6fq-nWH0_Tfr0q5fFuX819gV5mWGRVn8kIQKUa1eWy1NLu7yLIlbNz0y_i_R_3DUxBDASeumo-wkM0qGFKLmJNdyrqYeiH5moalsZ-i5DZBO7NsBYLiCbA7YKFHX7jYu8ObTl7DX",
+  },
+  {
+    title: "Tandoori Chicken",
+    description:
+      "Amazing Indian dish with tenderloin chicken off the sizzles 🔥",
+    price: "$19.20",
+    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
+  },
+  {
+    title: "Chilaquiles",
+    description:
+      "Chilaquiles with cheese and sauce. A delicious mexican dish 🇲🇽",
+    price: "$14.50",
+    image:
+      "https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2020/11/Chilaquales-Recipe-Chilaquiles-Rojos-1.jpg",
+  },
+  {
+    title: "Chicken Caesar Salad",
+    description:
+      "One can never go wrong with a chicken caesar salad. Healthy option with greens and proteins!",
+    price: "$21.50",
+    image:
+      "https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da",
+  },
+  {
+    title: "Lasagna",
+    description: "With butter lettuce, tomato and sauce bechamel",
+    price: "$13.50",
+    image:
+      "https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg",
+  },
+  {
+    title: "Lasagna",
+    description: "With butter lettuce, tomato and sauce bechamel",
+    price: "$13.50",
+    image:
+      "https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg",
+  },
+];
