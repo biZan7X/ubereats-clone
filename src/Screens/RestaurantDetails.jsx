@@ -16,7 +16,12 @@ const Restaurantdetails = ({ route }) => {
       <FlatList
         data={foods}
         keyExtractor={(food, index) => String(index)}
-        renderItem={(food) => <Menuitem food={food.item} />}
+        renderItem={(food) => (
+          <Menuitem
+            food={food.item}
+            restaurantName={route.params.restaurant.name}
+          />
+        )}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (
           <Divider style={{ marginHorizontal: 40 }} />

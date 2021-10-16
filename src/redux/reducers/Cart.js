@@ -5,8 +5,20 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   switch (action.type) {
     case "TOGGLETOCART": {
-      console.log("clicked");
-      return state;
+      const { food, restaurantName, checkboxValue } = action.payload;
+      let newState = { ...state };
+      if (checkboxValue) {
+        newState.selectedItems = {
+          items: [...newState.selectedItems.items, food],
+          restaurantName: restaurantName,
+        };
+      } else {
+        newState.selectedItems.items = [...newState.selectedItems.items].filter(
+          (foodItem) => foodItem !== food
+        ); //! exp
+      }
+      //console.log(newState, "✌️");
+      return newState;
     }
     default:
       return state;

@@ -34,7 +34,7 @@ export const foods = [
     description: "With extra spicy ramen soup 🍜🔥",
     price: "$20.50",
     image:
-      "https://lh3.googleusercontent.com/proxy/Q6OQVXvzMBeCOOdP6fq-nWH0_Tfr0q5fFuX819gV5mWGRVn8kIQKUa1eWy1NLu7yLIlbNz0y_i_R_3DUxBDASeumo-wkM0qGFKLmJNdyrqYeiH5moalsZ-i5DZBO7NsBYLiCbA7YKFHX7jYu8ObTl7DX",
+      "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
   {
     title: "Tandoori Chicken",
