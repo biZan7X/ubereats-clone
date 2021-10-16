@@ -3,18 +3,13 @@ import { TouchableOpacity } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 
-const Viewcartbutton = () => {
-  const foodItems = useSelector((state) => state.cart.selectedItems.items);
-  const bill =
-    foodItems.length > 0
-      ? foodItems
-          .map((foodItem) => Number(foodItem.price.replace("$", "")))
-          .reduce((prev, cur) => prev + cur)
-      : 0;
-
+const Viewcartbutton = ({ bill, setToggleModal }) => {
   if (bill)
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => setToggleModal(true)}
+      >
         <Text style={[styles.text, { fontSize: 20 }]}>View Cart</Text>
         <Text style={[styles.text, styles.bill]}>$ {bill}</Text>
       </TouchableOpacity>

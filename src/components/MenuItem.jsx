@@ -11,9 +11,6 @@ const Menuitem = ({ food, restaurantName }) => {
     (state) => state.cart.selectedItems.items
   );
 
-  //console.log(itemsAddedToCart.includes(food));
-  //dispatch(toggleToCart())
-
   return (
     <View style={styles.container}>
       <BouncyCheckbox
