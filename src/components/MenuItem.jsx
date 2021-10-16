@@ -1,8 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useDispatch } from "react-redux";
+
+import { toggleToCart } from "../redux/actions/index";
 
 const Menuitem = ({ food }) => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <BouncyCheckbox
@@ -11,6 +15,7 @@ const Menuitem = ({ food }) => {
           borderRadius: 0,
         }}
         fillColor="green"
+        onPress={() => dispatch(toggleToCart())}
       />
       <View style={styles.info}>
         <Text style={{ fontSize: 19, fontWeight: "600" }}>{food.title}</Text>
