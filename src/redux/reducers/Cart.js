@@ -7,6 +7,7 @@ const cartReducer = (state = initState, action) => {
     case "TOGGLETOCART": {
       const { food, restaurantName, checkboxValue } = action.payload;
       let newState = { ...state };
+
       if (checkboxValue) {
         newState.selectedItems = {
           items: [...newState.selectedItems.items, food],
