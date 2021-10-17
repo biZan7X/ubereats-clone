@@ -37,6 +37,7 @@ const Viewcartmodal = ({
               source={require("../assets/animations/arrow-down.json")}
               autoPlay
               loop
+              speed={0.25}
             />
           </View>
           <View style={styles.subContainer}>
