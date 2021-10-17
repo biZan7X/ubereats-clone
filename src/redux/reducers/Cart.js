@@ -21,6 +21,9 @@ const cartReducer = (state = initState, action) => {
       //console.log(newState, "✌️");
       return newState;
     }
+
+    case "EMPTY_CART":
+      return initState;
     default:
       return state;
   }

@@ -17,11 +17,12 @@ import NavigationActions from "../navigation/NavigationActions";
 import { foods } from "../utils/localData";
 import colors from "../utils/colors";
 
-const Ordercompleted = ({
-  restaurantName = "theque",
-  bill = "00",
-  orderedItems = foods,
-}) => {
+const Ordercompleted = ({ route }) => {
+  const {
+    restaurantName = "theque",
+    bill = "00",
+    orderedItems = foods,
+  } = route.params;
   return (
     <SafeAreaView style={styles.container}>
       <LottieView
@@ -33,7 +34,7 @@ const Ordercompleted = ({
 
       <Text
         style={styles.text}
-      >{`Your order at ${restaurantName} has been successfully placed for ${bill} 😁✌️`}</Text>
+      >{`Your order at ${restaurantName} has been successfully placed for $${bill} 😁✌️`}</Text>
       <View style={{ height: "50%" }}>
         <FlatList
           data={orderedItems}
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: colors.secondary_background,
+    padding: 15,
   },
   text: {
     fontSize: 18,

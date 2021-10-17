@@ -10,12 +10,11 @@ import {
 import GestureRecognizer from "react-native-swipe-gestures";
 import { Divider } from "react-native-elements";
 import LottieView from "lottie-react-native";
+import { useDispatch } from "react-redux";
 
 import Orderitem from "../components/OrderItem";
 
-import { db, timeStamp } from "../firebase";
-
-import NavigationActions from "../navigation/NavigationActions";
+import { placeOrder } from "../redux/actions";
 
 const Viewcartmodal = ({
   visible,
@@ -24,6 +23,8 @@ const Viewcartmodal = ({
   bill,
   restaurantName,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <GestureRecognizer onSwipeDown={() => setToggleModal(false)}>
       <Modal visible={visible} animationType="slide" transparent={true}>
@@ -81,8 +82,7 @@ const Viewcartmodal = ({
                 style={styles.CheckOut}
                 onPress={() => {
                   setToggleModal(false);
-                  //onSubmitHandler();
-                  NavigationActions.navigate("OrderCompleted");
+                  dispatch(placeOrder({ cartItems, bill, restaurantName }));
                 }}
               >
                 <Text style={[styles.text, { fontSize: 20 }]}>Checkout</Text>
