@@ -39,24 +39,32 @@ const Viewcartmodal = ({
           </View>
           <View style={styles.subContainer}>
             <Text style={styles.title}>{restaurantName}</Text>
-            <FlatList
-              data={cartItems}
-              keyExtractor={(cartItem, index) => String(index)}
-              renderItem={(cartItem) => (
-                <Orderitem
-                  foodName={cartItem.item.title}
-                  cost={cartItem.item.price}
-                />
-              )}
-              ItemSeparatorComponent={() => (
-                <Divider style={{ marginHorizontal: 20 }} color="gray" />
-              )}
-              style={{
-                flexGrow: 0,
-              }}
-            />
+            <View style={{ height: "65%" }}>
+              <FlatList
+                data={cartItems}
+                keyExtractor={(cartItem, index) => String(index)}
+                renderItem={(cartItem) => (
+                  <Orderitem
+                    foodName={cartItem.item.title}
+                    cost={cartItem.item.price}
+                  />
+                )}
+                ItemSeparatorComponent={() => (
+                  <Divider style={{ marginHorizontal: 20 }} color="gray" />
+                )}
+                style={{
+                  flexGrow: 0,
+                  marginTop: 10,
+                }}
+              />
+            </View>
 
             <View style={styles.footer}>
+              <Divider
+                style={{ marginHorizontal: 0 }}
+                color="black"
+                width={1}
+              />
               <View style={styles.subtotal}>
                 <Text style={{ fontSize: 18, fontWeight: "800" }}>
                   Subtotal
@@ -97,7 +105,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: 30,
+    marginTop: 15,
   },
   text: {
     color: "white",
@@ -115,7 +123,7 @@ const styles = StyleSheet.create({
   subtotal: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 10,
+    paddingTop: 15,
   },
   footer: {
     width: "100%",
