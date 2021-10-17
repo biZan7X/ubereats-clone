@@ -38,33 +38,6 @@ const Home = ({
   getRestaurantData,
   setRefreshing,
 }) => {
-  const getRestaurantsFromYelp = () => {
-    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
-
-    const apiOptions = {
-      headers: {
-        Authorization: `Bearer ${config.YELP_API_KEY}`,
-      },
-    };
-
-    setRefreshing(true);
-    try {
-      return fetch(yelpUrl, apiOptions)
-        .then((res) => res.json())
-        .then((json) => {
-          setRestaurantData(
-            json.businesses.filter((item) =>
-              item.transactions.includes(activeTab.toLowerCase())
-            )
-          );
-          setRefreshing(false);
-        });
-    } catch (err) {
-      console.log("Failed to fetch data from yelp:", err);
-    }
-    setRefreshing(false);
-  };
-
   useEffect(() => {
     NavigationActions.set(navigation);
   }, []);

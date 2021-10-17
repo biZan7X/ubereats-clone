@@ -13,6 +13,8 @@ import LottieView from "lottie-react-native";
 
 import Orderitem from "../components/OrderItem";
 
+import { db, timeStamp } from "../firebase";
+
 import NavigationActions from "../navigation/NavigationActions";
 
 const Viewcartmodal = ({
@@ -79,6 +81,7 @@ const Viewcartmodal = ({
                 style={styles.CheckOut}
                 onPress={() => {
                   setToggleModal(false);
+                  //onSubmitHandler();
                   NavigationActions.navigate("OrderCompleted");
                 }}
               >
