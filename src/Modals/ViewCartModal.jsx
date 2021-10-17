@@ -10,8 +10,11 @@ import {
 import GestureRecognizer from "react-native-swipe-gestures";
 import { Divider } from "react-native-elements";
 import LottieView from "lottie-react-native";
+import { useDispatch } from "react-redux";
 
 import Orderitem from "../components/OrderItem";
+
+import { placeOrder } from "../redux/actions";
 
 const Viewcartmodal = ({
   visible,
@@ -20,6 +23,8 @@ const Viewcartmodal = ({
   bill,
   restaurantName,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <GestureRecognizer onSwipeDown={() => setToggleModal(false)}>
       <Modal visible={visible} animationType="slide" transparent={true}>
@@ -35,6 +40,7 @@ const Viewcartmodal = ({
               source={require("../assets/animations/arrow-down.json")}
               autoPlay
               loop
+              speed={0.25}
             />
           </View>
           <View style={styles.subContainer}>
@@ -72,7 +78,13 @@ const Viewcartmodal = ({
                 <Text style={{ fontSize: 18, fontWeight: "800" }}>${bill}</Text>
               </View>
 
-              <TouchableOpacity style={styles.CheckOut} onPress={() => {}}>
+              <TouchableOpacity
+                style={styles.CheckOut}
+                onPress={() => {
+                  setToggleModal(false);
+                  dispatch(placeOrder({ cartItems, bill, restaurantName }));
+                }}
+              >
                 <Text style={[styles.text, { fontSize: 20 }]}>Checkout</Text>
                 <Text style={[styles.text, styles.bill]}>$ {bill}</Text>
               </TouchableOpacity>

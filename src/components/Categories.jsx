@@ -65,7 +65,7 @@ const Categories = () => {
         renderItem={(item) => <CategoryItem item={item.item} />}
         style={{ marginLeft: 10 }}
         horizontal
-        showsHorizontalScrollIndicator
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );

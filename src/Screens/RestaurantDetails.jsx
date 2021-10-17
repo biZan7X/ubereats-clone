@@ -33,6 +33,7 @@ const Restaurantdetails = ({ route }) => {
           <Menuitem
             food={food.item}
             restaurantName={route.params.restaurant.name}
+            itemsAddedToCart={cartItems}
           />
         )}
         showsVerticalScrollIndicator={false}
