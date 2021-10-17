@@ -13,6 +13,8 @@ import LottieView from "lottie-react-native";
 
 import Orderitem from "../components/OrderItem";
 
+import NavigationActions from "../navigation/NavigationActions";
+
 const Viewcartmodal = ({
   visible,
   setToggleModal,
@@ -72,7 +74,13 @@ const Viewcartmodal = ({
                 <Text style={{ fontSize: 18, fontWeight: "800" }}>${bill}</Text>
               </View>
 
-              <TouchableOpacity style={styles.CheckOut} onPress={() => {}}>
+              <TouchableOpacity
+                style={styles.CheckOut}
+                onPress={() => {
+                  setToggleModal(false);
+                  NavigationActions.navigate("OrderCompleted");
+                }}
+              >
                 <Text style={[styles.text, { fontSize: 20 }]}>Checkout</Text>
                 <Text style={[styles.text, styles.bill]}>$ {bill}</Text>
               </TouchableOpacity>

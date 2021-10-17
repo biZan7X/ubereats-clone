@@ -5,25 +5,30 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { toggleToCart } from "../redux/actions/index";
 
-const Menuitem = ({ food, restaurantName }) => {
+const Menuitem = ({
+  food,
+  restaurantName,
+  itemsAddedToCart = [],
+  isFromOrderCompleted = false,
+}) => {
   const dispatch = useDispatch();
-  const itemsAddedToCart = useSelector(
-    (state) => state.cart.selectedItems.items
-  );
 
   return (
     <View style={styles.container}>
-      <BouncyCheckbox
-        iconStyle={{
-          borderColor: "grey",
-          borderRadius: 0,
-        }}
-        fillColor="green"
-        onPress={(checkboxValue) =>
-          dispatch(toggleToCart({ food, restaurantName, checkboxValue }))
-        }
-        isChecked={itemsAddedToCart.includes(food)}
-      />
+      {isFromOrderCompleted ? null : (
+        <BouncyCheckbox
+          iconStyle={{
+            borderColor: "grey",
+            borderRadius: 0,
+          }}
+          fillColor="green"
+          onPress={(checkboxValue) =>
+            dispatch(toggleToCart({ food, restaurantName, checkboxValue }))
+          }
+          isChecked={itemsAddedToCart.includes(food)}
+        />
+      )}
+
       <View style={styles.info}>
         <Text style={{ fontSize: 19, fontWeight: "600" }}>{food.title}</Text>
         <Text>{food.description}</Text>
