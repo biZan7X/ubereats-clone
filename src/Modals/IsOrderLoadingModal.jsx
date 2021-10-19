@@ -1,17 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, StyleSheet, Modal } from "react-native";
 import LottieView from "lottie-react-native";
 
-//TODO: bug - model not closing after ordering for second time
-const IsorderloadingModal = ({ visible }) => {
-  useEffect(() => console.log(visible), [visible]);
+const IsorderloadingModal = ({ visible, setIsOrderLoading }) => {
   return (
-    <Modal visible={visible} animationType="fade" transparent={true}>
+    <Modal
+      visible={visible}
+      animationType="fade"
+      transparent={true}
+      onRequestClose={() => setIsOrderLoading(false)}
+    >
       <View style={styles.container}>
         <LottieView
           source={require("../assets/animations/scanner.json")}
           autoPlay
           loop
+          speed={3}
         />
       </View>
     </Modal>
