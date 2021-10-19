@@ -3,24 +3,25 @@ import { Alert } from "react-native";
 
 import { emptyCart, placeOrder, setIsOrderLoading } from "../actions";
 
-import { db, timeStamp } from "../../firebase";
+import apiCall from "../../utils/apiCall";
 
 import NavigationActions from "../../navigation/NavigationActions";
 
+const url = "http://localhost:3000/api/orders/";
+
 function* fetchPlaceOrder(action) {
   const { cartItems, restaurantName, bill } = action.payload;
-  const isOrderLoading = yield select((state) => state.cart.isOrderLoading);
 
   try {
     yield put(setIsOrderLoading(true));
-    yield db.collection("Orders").add({
+    yield call(apiCall, url, "POST", {
       items: cartItems,
       bill: bill,
       restaurantName: restaurantName,
-      orderedAt: timeStamp(),
+      orderedAt: "17:00",
     });
 
-    //yield put(setIsOrderLoading(false));
+    yield put(setIsOrderLoading(false));
     yield put(emptyCart());
 
     yield call(NavigationActions.navigate, "OrderCompleted", {
@@ -30,6 +31,7 @@ function* fetchPlaceOrder(action) {
     });
   } catch (err) {
     Alert.alert("Oops", "Something went wrong, please try again later");
+    console.log(err);
   }
 }
 
