@@ -1,5 +1,6 @@
 const initState = {
   selectedItems: { items: [], restaurantName: "" },
+  isOrderLoading: false,
 };
 
 const cartReducer = (state = initState, action) => {
@@ -21,6 +22,9 @@ const cartReducer = (state = initState, action) => {
       //console.log(newState, "✌️");
       return newState;
     }
+
+    case "SETISORDERLOADING":
+      return { ...state, isOrderLoading: action.payload };
 
     case "EMPTY_CART":
       return initState;

@@ -18,4 +18,11 @@ const placeOrder = (payload) => {
   };
 };
 
-export { toggleToCart, placeOrder, emptyCart };
+const setIsOrderLoading = (payload) => {
+  return {
+    type: "SETISORDERLOADING",
+    payload,
+  };
+};
+
+export { toggleToCart, placeOrder, emptyCart, setIsOrderLoading };

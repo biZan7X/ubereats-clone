@@ -6,13 +6,18 @@ import { useSelector } from "react-redux";
 import About from "../components/About";
 import Menuitem from "../components/MenuItem";
 import Viewcartbutton from "../components/ViewCartButton";
+import IsorderloadingModal from "../Modals/IsOrderLoadingModal";
 
 import Viewcartmodal from "../Modals/ViewCartModal";
 
 import { foods } from "../utils/localData";
 
 const Restaurantdetails = ({ route }) => {
-  const cartItems = useSelector((state) => state.cart.selectedItems.items);
+  const cart = useSelector((state) => state.cart);
+  const {
+    selectedItems: { items: cartItems },
+    isOrderLoading,
+  } = cart;
   const bill =
     cartItems.length > 0
       ? cartItems
@@ -50,6 +55,7 @@ const Restaurantdetails = ({ route }) => {
         bill={bill}
         restaurantName={route.params.restaurant.name}
       />
+      <IsorderloadingModal visible={isOrderLoading} />
     </View>
   );
 };
