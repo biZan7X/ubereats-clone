@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { Divider } from "react-native-elements";
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 import About from "../components/About";
 import Menuitem from "../components/MenuItem";
@@ -10,14 +10,16 @@ import IsorderloadingModal from "../Modals/IsOrderLoadingModal";
 
 import Viewcartmodal from "../Modals/ViewCartModal";
 
+import { setIsOrderLoading } from "../redux/actions";
+
 import { foods } from "../utils/localData";
 
-const Restaurantdetails = ({ route }) => {
-  const cart = useSelector((state) => state.cart);
+const Restaurantdetails = ({ route, cart, setIsOrderLoading }) => {
   const {
     selectedItems: { items: cartItems },
     isOrderLoading,
   } = cart;
+
   const bill =
     cartItems.length > 0
       ? cartItems
@@ -55,11 +57,20 @@ const Restaurantdetails = ({ route }) => {
         bill={bill}
         restaurantName={route.params.restaurant.name}
       />
-      <IsorderloadingModal visible={isOrderLoading} />
+      <IsorderloadingModal
+        visible={isOrderLoading}
+        setIsOrderLoading={setIsOrderLoading}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default Restaurantdetails;
+const mapStateToProps = ({ cart }) => {
+  return { cart: cart };
+};
+
+export default connect(mapStateToProps, { setIsOrderLoading })(
+  Restaurantdetails
+);
