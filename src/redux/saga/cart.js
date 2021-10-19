@@ -1,7 +1,7 @@
 import { put, takeEvery, all, select, call } from "@redux-saga/core/effects";
 import { Alert } from "react-native";
 
-import { emptyCart, placeOrder } from "../actions";
+import { emptyCart, placeOrder, setIsOrderLoading } from "../actions";
 
 import { db, timeStamp } from "../../firebase";
 
@@ -9,17 +9,21 @@ import NavigationActions from "../../navigation/NavigationActions";
 
 function* fetchPlaceOrder(action) {
   const { cartItems, restaurantName, bill } = action.payload;
+  const isOrderLoading = yield select((state) => state.cart.isOrderLoading);
 
   try {
-    db.collection("Orders").add({
+    yield put(setIsOrderLoading(true));
+    yield db.collection("Orders").add({
       items: cartItems,
       bill: bill,
       restaurantName: restaurantName,
       orderedAt: timeStamp(),
     });
 
+    //yield put(setIsOrderLoading(false));
     yield put(emptyCart());
-    NavigationActions.navigate("OrderCompleted", {
+
+    yield call(NavigationActions.navigate, "OrderCompleted", {
       orderedItems: cartItems,
       restaurantName: restaurantName,
       bill: bill,

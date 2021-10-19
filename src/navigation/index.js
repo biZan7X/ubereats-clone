@@ -6,6 +6,8 @@ import Home from "../Screens/Home";
 import Restaurantdetails from "../Screens/RestaurantDetails";
 import Ordercompleted from "../Screens/OrderCompleted";
 
+import IsorderloadingModal from "../Modals/IsOrderLoadingModal";
+
 const Stack = createNativeStackNavigator();
 
 const RootNavigation = () => {
@@ -24,5 +26,12 @@ const RootNavigation = () => {
     </NavigationContainer>
   );
 };
+
+/*
+<Stack.Screen
+          name="IsOrderLoadingMoadal"
+          component={IsorderloadingModal}
+        />
+*/
 
 export default RootNavigation;
