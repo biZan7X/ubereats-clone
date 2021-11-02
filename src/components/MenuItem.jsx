@@ -28,7 +28,6 @@ const Menuitem = ({
           isChecked={itemsAddedToCart.includes(food)}
         />
       )}
-
       <View style={styles.info}>
         <Text style={{ fontSize: 19, fontWeight: "600" }}>{food.title}</Text>
         <Text>{food.description}</Text>
@@ -43,15 +42,16 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
-    margin: 20,
+    padding: 10,
+    width: "100%",
   },
   info: {
-    width: 240,
+    width: "65%",
     justifyContent: "space-evenly",
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 90,
+    height: 90,
     borderRadius: 8,
   },
 });
